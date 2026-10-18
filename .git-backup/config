@@ -1,0 +1,18 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[submodule]
+	active = .
+[remote "old-origin"]
+	url = https://github.com/Vimuth05/TUTE_03.git
+	fetch = +refs/heads/main:refs/remotes/old-origin/main
+[branch "master"]
+	remote = old-origin
+	merge = refs/heads/main
+[remote "origin"]
+	url = https://github.com/Vimuth05/TUTE_3.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
