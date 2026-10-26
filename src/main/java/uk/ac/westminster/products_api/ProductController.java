@@ -31,14 +31,13 @@ public class ProductController {
         return productService.addProduct(product);
     }
 
-    @DeleteMapping("/products/{id}")
+    @DeleteMapping("/{id}")
     public void deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
     }
 
-    @GetMapping("/products/search")
+    @GetMapping("/search")
     public List<Product> search(@RequestParam String name) {
         return productService.getProductByName(name);
-
     }
 }
