@@ -8,34 +8,12 @@ import java.util.Optional;
 
 @Service
 public class ProductService {
+
     private List<Product> products = new ArrayList<>();
     private Long nextId = 1L;
-    public List<Product> getAllProducts() {
-        return products;
-    }
-    public Product addProduct(Product product) {
-        product.setId(nextId++); // use the value, then add one
-        products.add(product);
-        return product;
-    }
-
-    public Optional<Product> getProductById(Long Id){
-        return products.stream()
-                .filter(p -> p.getId().equals(Id))
-                .findFirst();
-    }
-
-    public void deleteProduct(Long id) {
-        products.removeIf(p -> p.getId().equals(id));
-    }
-
-    public List<Product> getProductByName(String name){
-        return products.stream()
-                .filter(p -> p.getName().equals(name))
-                .toList();
-    }
 
     public ProductService() {
+
         products.add(new DigitalProduct(
                 nextId++,
                 "Clean Code (E-book)",
@@ -53,4 +31,40 @@ public class ProductService {
         ));
     }
 
+    public List<Product> getAllProducts() {
+        return products;
+    }
+
+    public Product addProduct(Product product) {
+        product.setId(nextId++);
+        products.add(product);
+        return product;
+    }
+
+    public Optional<Product> getProductById(Long id) {
+        return products.stream()
+                .filter(p -> p.getId().equals(id))
+                .findFirst();
+    }
+
+    public void deleteProduct(Long id) {
+        products.removeIf(p -> p.getId().equals(id));
+    }
+
+    public List<Product> getProductByName(String name) {
+        return products.stream()
+                .filter(p -> p.getName().equals(name))
+                .toList();
+    }
+
+    public List<String> getAllSummaries() {
+
+        List<String> summaries = new ArrayList<>();
+
+        for (Product p : products) {
+            summaries.add(p.getSummary());
+        }
+
+        return summaries;
+    }
 }
